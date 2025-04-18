@@ -1,7 +1,7 @@
 # nix-zshrc
 *nix zsh development setup
 
-Install Starship first as per the website.
+Have zsh shell set as default over bash shell. Then install Starship first as per the website.
 
 **Requirements**
 - Starship (https://starship.rs)
