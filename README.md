@@ -1,8 +1,11 @@
 # nix-zshrc
 *nix zsh development setup
 
+Install Starship first as per the website.
+
 **Requirements**
-- Homebrew
+- Starship (https://starship.rs)
+- Homebrew (https://brew.sh)
 - pyenv (Python Version Manager)
 - nvm (Node Version Manager)
 - bat (A cat(1) clone with wings)
