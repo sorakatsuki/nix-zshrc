@@ -30,6 +30,7 @@ Unlike configurations managed by frameworks (like Oh My Zsh) or package managers
     -   [`aliases.zsh`](#aliaseszsh)
 -   [Customization](#customization)
 -   [Notes & Considerations](#notes--considerations)
+-   [Usage Examples](#usage-examples)
 
 ## Features
 
@@ -136,3 +137,335 @@ git clone [https://github.com/MichaelAquilina/zsh-you-should-use.git](https://gi
 
 # Install fancy-ctrl-z (download the script directly)
 curl -o ~/.zsh/fancy-ctrl-z.zsh [https://raw.githubusercontent.com/FigSupport/fancy-ctrl-z/main/fancy-ctrl-z.zsh](https://raw.githubusercontent.com/FigSupport/fancy-ctrl-z/main/fancy-ctrl-z.zsh)
+
+## Usage Examples
+
+This section provides examples of how to use the aliases and integrated tools configured in this setup.
+
+### Standard Aliases
+
+* **Clear Screen:**
+    ```bash
+    # Instead of typing 'clear'
+    c
+    ```
+
+* **View History:**
+    ```bash
+    # Show command history
+    h
+
+    # Search history for lines containing 'docker'
+    gh docker
+    ```
+
+* **File/Directory Operations:**
+    ```bash
+    # Create nested directories without errors if they exist
+    mkdir my/new/project/src
+
+    # Move file, prints action, asks before overwrite
+    mv old_name.txt new_name.txt
+    # Output might be: renamed 'old_name.txt' -> 'new_name.txt'
+
+    # Copy file, prints action, asks before overwrite
+    cp config.yaml config_backup.yaml
+    # Output might be: 'config.yaml' -> 'config_backup.yaml'
+
+    # Display directory structure with colors
+    tree
+    ```
+
+* **System Information:**
+    ```bash
+    # Ping google.com 5 times
+    ping google.com
+
+    # Show disk usage in human-readable format
+    df
+    ```
+
+* **Clipboard (macOS):**
+    ```bash
+    # Copy the content of a file to the clipboard
+    cat file.txt | pbc
+    ```
+
+* **Editor:**
+    ```bash
+    # Open a file in Neovim (nvim)
+    vim my_script.py
+    ```
+
+* **GPG Keys:**
+    ```bash
+    # List your GPG keys
+    gpgl
+    ```
+
+### Python Aliases
+
+* **Run Python Scripts:**
+    ```bash
+    # Run script using default python (managed by pyenv)
+    p main.py
+
+    # Run script specifically with python 2 (if configured in pyenv)
+    # Ensure $HOME/.pyenv/shims/python2 exists and points to a pyenv-managed Python 2
+    p2 legacy_script.py
+
+    # Run script specifically with python 3
+    p3 script_py3.py
+    ```
+
+### macOS Specific Aliases
+
+* **Restart Finder/Dock:**
+    ```bash
+    # Restart the Finder process
+    rfinder
+
+    # Restart the Dock process
+    rdock
+    ```
+
+### Modern Tool Replacements (Aliases)
+
+* **View File Content (`cat` -> `bat`):**
+    ```bash
+    # Display a file with syntax highlighting, no pager for small files
+    cat my_code.js
+    ```
+    *Output will be colorized based on the file type.*
+
+* **Disk Usage (`gdu`/`disk` -> `gdu-go`):**
+    ```bash
+    # Analyze disk usage of the current directory interactively
+    gdu
+    # Or use:
+    disk
+
+    # Analyze a specific directory
+    gdu /var/log
+    ```
+    *This opens an interactive terminal UI to navigate and see disk usage.*
+
+* **Process Monitoring (`ptop` -> `bpytop`, `top` -> `htop`):**
+    ```bash
+    # Launch the bpytop process monitor
+    ptop
+
+    # Launch the htop interactive process monitor
+    top
+    ```
+    *Both open full-screen interactive interfaces.*
+
+* **Search (`grep` -> `rg`):**
+    ```bash
+    # Recursively search for 'myVariable' in the current directory
+    grep 'myVariable' .
+
+    # Search for 'ERROR' within a specific file
+    grep 'ERROR' application.log
+    ```
+    *`rg` is generally much faster than standard `grep`, especially for recursive searches.*
+
+* **Download (`wget` -> `wget2`):**
+    ```bash
+    # Download a file (using wget2 if available)
+    wget [https://example.com/large_file.zip](https://example.com/large_file.zip)
+    ```
+
+### Network Aliases
+
+* **DNS Lookup (`dnslookup` -> `dig`):**
+    ```bash
+    # Show concise A/AAAA records for a domain
+    dnslookup example.com
+    ```
+    *Output will show the IP address(es) associated with the domain.*
+
+* **IP Information (`ip`):**
+    ```bash
+    # Display local IP addresses and your public IP address
+    ip
+    ```
+    *Combines output from `ifconfig` (local) and `curl ipinfo.io/ip` (external).*
+
+* **Stealthy Scan (`snmap` -> `nmap`):**
+    ```bash
+    # Perform a specific type of slow, fragmented nmap scan
+    snmap target-host.com
+    ```
+    *Note: Use network scanning tools responsibly and ethically.*
+
+### Git Aliases
+
+* **Stage Changes:**
+    ```bash
+    # Stage all changes in the current directory
+    ga .
+
+    # Stage a specific file
+    ga README.md
+    ```
+
+* **Check Status:**
+    ```bash
+    # Show git status
+    gs
+    ```
+
+* **Commit Changes:**
+    ```bash
+    # Commit staged changes with a message
+    gc -m "Implement new feature"
+    ```
+
+### File Listing (`ls` -> `eza`)
+
+* **Basic Listing:**
+    ```bash
+    # List files with icons, directories first (using eza)
+    ls
+    ```
+    *Output will look different from standard `ls`, often more colorful and using icons if your terminal supports them.*
+
+* **Long Format / Hidden Files:**
+    ```bash
+    # Long format, human-readable sizes, icons, dirs first
+    ll
+
+    # List all files including hidden, icons, dirs first
+    la
+
+    # Long format, human-readable, all files including hidden, icons, dirs first
+    lla
+    # or
+    lsa
+    ```
+
+### Navigation Aliases
+
+* **Quickly Move Up Directories:**
+    ```bash
+    # Go up one directory (equivalent to cd ..)
+    ..
+
+    # Go up two directories (equivalent to cd ../..)
+    ...
+    # or
+    .2
+
+    # Go up three directories
+    ....
+    # or
+    .3
+    ```
+
+### Dotfile Editing Aliases (`zed`)
+
+* **Reload Zsh Config:**
+    ```bash
+    # Source ~/.zshrc in the current shell session
+    sc
+    ```
+
+* **Edit Config Files:**
+    ```bash
+    # Open ~/.zshrc in the zed editor
+    zshrc
+
+    # Open ~/.config/starship.toml in zed
+    sship
+
+    # Open ~/.zsh/aliases.zsh in zed
+    aliases
+    ```
+    *(Remember to change `zed` in the aliases if you use a different editor)*
+
+### File Sharing Aliases
+
+* **Share Current Directory via HTTP:**
+    ```bash
+    # Start a Python HTTP server on port 2121
+    pshare
+
+    # Start a Ruby HTTP server on port 2121
+    rshare
+    ```
+    *Access files from another device on your network via `http://<your-ip>:2121`.*
+
+### Integrated Tool Usage
+
+* **Starship Prompt:**
+    * The prompt itself is provided by Starship. It automatically shows context like current directory, Git branch status, Python version, etc. There's no command to run; it's always active.
+
+* **Zoxide (Enhanced `cd`):**
+    ```bash
+    # After visiting /home/user/my/frequent/project a few times:
+    # Jump directly to that directory from anywhere
+    z project
+
+    # See directories matching 'proj' and select interactively
+    zi proj
+
+    # Use tab completion to find matches
+    z proj<TAB>
+    ```
+
+* **FZF (Fuzzy Finder):**
+    * **History Search:** Press `Ctrl+R` and start typing to fuzzy-search your command history.
+    * **File/Directory Completion:** Type a command and `**`, then press `Tab`. Example:
+        ```bash
+        vim **<TAB> # Opens fzf to select a file/dir recursively
+        cd **<TAB>  # Opens fzf to select a directory to cd into
+        ```
+    * **Filtering:** Pipe output to `fzf` for interactive filtering.
+        ```bash
+        history | fzf
+        ```
+
+* **The Fuck (Command Correction):**
+    ```bash
+    # Make a typo
+    git ststus
+    # zsh: command not found: git
+
+    # Type 'fuck' and press Enter
+    fuck
+    # It will suggest: git status [enter/↑/↓/ctrl+c]
+    # Press Enter to execute the corrected command.
+    ```
+
+* **Pyenv (Python Version Management):**
+    ```bash
+    # List installed Python versions
+    pyenv versions
+
+    # List available versions to install
+    pyenv install --list
+
+    # Install a specific Python version
+    pyenv install 3.11.5
+
+    # Set the global default Python version
+    pyenv global 3.11.5
+
+    # Set a Python version for the current directory only
+    pyenv local 3.10.1
+    ```
+
+* **Zsh Completion (Case-Insensitive & Menu):**
+    * **Case-Insensitive:**
+        ```bash
+        # Type 'cd DOC' then press Tab
+        # It will complete to 'cd Documents' (if that directory exists)
+        cd DOC<TAB>
+        ```
+    * **Menu Selection:**
+        ```bash
+        # Type 'git ' then press Tab
+        # A menu appears listing possible git commands. Use arrow keys or type further to select.
+        git <TAB>
+        ```
