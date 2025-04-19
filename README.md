@@ -139,6 +139,56 @@ git clone [https://github.com/MichaelAquilina/zsh-you-should-use.git](https://gi
 curl -o ~/.zsh/fancy-ctrl-z.zsh [https://raw.githubusercontent.com/FigSupport/fancy-ctrl-z/main/fancy-ctrl-z.zsh](https://raw.githubusercontent.com/FigSupport/fancy-ctrl-z/main/fancy-ctrl-z.zsh)
 ```
 
+### 4. Place Configuration Files
+Copy the content of the provided .zshrc file to your user's home directory: ~/.zshrc.
+Create the ~/.zsh/ directory if it doesn't exist (it should exist after step 3).
+Copy the content of the provided aliases.zsh file to ~/.zsh/aliases.zsh.
+(Optional) If you have custom functions or NVM setup, place them in ~/.zsh/functions.zsh and ~/.zsh/nvm.zsh respectively.
+
+### 5. Setup Environment Managers (pyenv/nvm)
+Ensure pyenv (and nvm if used) are correctly set up beyond just the eval lines in .zshrc. This often involves adding initialization lines to your shell profile as per their official documentation. The eval "$(pyenv init -)" line handles much of pyenv's setup. For nvm, follow its install script instructions carefully.
+
+### 6. Set Zsh as Default Shell
+Make Zsh your login shell:
+```bash
+chsh -s $(which zsh)
+```
+
+### 7. Launch Zsh
+Open a new terminal window. If everything is installed and configured correctly, you should see the Starship prompt, and the aliases and features should be active.
+
+### Configuration Highlights
+.zshrc
+Entry Point: This is the main file Zsh reads when starting an interactive session.
+Options (setopt ...): Configures various Zsh shell behaviours.
+Plugin Loading (source ...): Loads the manually installed plugins. Note that zsh-autosuggestions is explicitly not loaded, potentially assuming usage of a terminal like Warp that provides similar functionality.
+Sourcing Local Files: Loads aliases, functions, and nvm configuration from the ~/.zsh/ directory.
+Completion System (compinit, zstyle ...): Initializes and configures Zsh's tab completion.
+Environment (export ...): Sets environment variables like BAT_THEME and modifies the PATH.
+Tool Initialization (eval ...): Runs initialization commands required by tools like starship, zoxide, fzf, thefuck, and pyenv to integrate them into the shell session.
+aliases.zsh
+Shortcuts: Provides short aliases for frequently used commands (c, h, ga, gs, etc.).
+Safety/Verbosity: Makes mv and cp verbose and interactive (-vi).
+Modern Replacements: Aliases standard commands to their modern counterparts (ls->eza, cat->bat, grep->rg, etc.).
+Navigation: Quick cd .. aliases (.., ..., .2, etc.).
+Editing: Aliases for quickly editing configuration files using zed (zshrc, sship, aliases). Remember to change zed if you use a different editor.
+Utility: Includes aliases for IP lookup (ip), local file sharing (pshare, rshare), and network scanning (snmap).
+Customization
+Aliases: Add, remove, or modify aliases by editing the ~/.zsh/aliases.zsh file.
+Zsh Options: Add or change setopt lines in ~/.zshrc.
+Plugins: Add new plugins by cloning/downloading them (often into ~/.zsh/) and adding a source line in ~/.zshrc. Remove plugins by deleting the corresponding source line and removing the plugin files.
+Tools: Change which tools are used (e.g., change eza back to ls, change the editor in aliases) by modifying ~/.zsh/aliases.zsh. Remember to install/uninstall the corresponding dependency.
+Starship Prompt: Customize the prompt by editing Starship's configuration file, typically located at ~/.config/starship.toml. The sship alias provides a shortcut if you use zed.
+Environment Variables: Modify export lines in ~/.zshrc.
+After making changes to .zshrc or files sourced by it (like aliases.zsh), either restart your shell or run source ~/.zshrc (or use the sc alias) to apply the changes to your current session.
+
+### Notes & Considerations
+Editor: The configuration uses zed in several aliases. If you prefer nvim, vim, code, or another editor, update the zshrc, sship, and aliases aliases in ~/.zsh/aliases.zsh.
+zsh-autosuggestions: This popular plugin is explicitly commented out in the .zshrc, with a note suggesting it's unnecessary when using Warp Terminal. If you are not using Warp (or a similar terminal with built-in suggestions), you might want to install zsh-autosuggestions and uncomment/add its source line.
+zsh-z vs zoxide: The .zshrc notes that zsh-z was replaced with zoxide (initialized via eval "$(zoxide init zsh)").
+ifconfig: The ip alias uses ifconfig. On modern Linux systems, ifconfig is often deprecated in favor of ip addr. The alias might need adjustment depending on your OS and installed tools (ip addr show | grep "inet\s" might be a replacement part). macOS commonly still uses ifconfig.
+Error Handling: If commands fail after setup, it's likely due to a missing dependency. Revisit the Dependencies list and ensure everything is installed correctly. Check the output when opening a new terminal for any error messages.
+
 ## Usage Examples
 
 This section provides examples of how to use the aliases and integrated tools configured in this setup.
