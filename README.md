@@ -137,6 +137,7 @@ git clone [https://github.com/MichaelAquilina/zsh-you-should-use.git](https://gi
 
 # Install fancy-ctrl-z (download the script directly)
 curl -o ~/.zsh/fancy-ctrl-z.zsh [https://raw.githubusercontent.com/FigSupport/fancy-ctrl-z/main/fancy-ctrl-z.zsh](https://raw.githubusercontent.com/FigSupport/fancy-ctrl-z/main/fancy-ctrl-z.zsh)
+```
 
 ## Usage Examples
 
