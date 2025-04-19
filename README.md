@@ -158,7 +158,7 @@ chsh -s $(which zsh)
 Open a new terminal window. If everything is installed and configured correctly, you should see the Starship prompt, and the aliases and features should be active.
 
 ### Configuration Highlights
-.zshrc
+#### .zshrc
 Entry Point: This is the main file Zsh reads when starting an interactive session.
 Options (setopt ...): Configures various Zsh shell behaviours.
 Plugin Loading (source ...): Loads the manually installed plugins. Note that zsh-autosuggestions is explicitly not loaded, potentially assuming usage of a terminal like Warp that provides similar functionality.
@@ -166,14 +166,15 @@ Sourcing Local Files: Loads aliases, functions, and nvm configuration from the ~
 Completion System (compinit, zstyle ...): Initializes and configures Zsh's tab completion.
 Environment (export ...): Sets environment variables like BAT_THEME and modifies the PATH.
 Tool Initialization (eval ...): Runs initialization commands required by tools like starship, zoxide, fzf, thefuck, and pyenv to integrate them into the shell session.
-aliases.zsh
+#### aliases.zsh
 Shortcuts: Provides short aliases for frequently used commands (c, h, ga, gs, etc.).
 Safety/Verbosity: Makes mv and cp verbose and interactive (-vi).
 Modern Replacements: Aliases standard commands to their modern counterparts (ls->eza, cat->bat, grep->rg, etc.).
 Navigation: Quick cd .. aliases (.., ..., .2, etc.).
 Editing: Aliases for quickly editing configuration files using zed (zshrc, sship, aliases). Remember to change zed if you use a different editor.
 Utility: Includes aliases for IP lookup (ip), local file sharing (pshare, rshare), and network scanning (snmap).
-Customization
+
+### Customization
 Aliases: Add, remove, or modify aliases by editing the ~/.zsh/aliases.zsh file.
 Zsh Options: Add or change setopt lines in ~/.zshrc.
 Plugins: Add new plugins by cloning/downloading them (often into ~/.zsh/) and adding a source line in ~/.zshrc. Remove plugins by deleting the corresponding source line and removing the plugin files.
