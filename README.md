@@ -7,7 +7,7 @@ This repository (or collection of files) details a personalized Zsh configuratio
 
 Unlike configurations managed by frameworks (like Oh My Zsh) or package managers (like Nix), this setup involves manually placing configuration files and installing dependencies.
 
-**Note:** This configuration seems tailored for macOS (judging by `pbcopy`, `killall Finder`/`Dock`, `~/.local/bin` path comment, Android SDK path structure) but can be adapted for Linux with minor changes (e.g., `pbcopy` alternative like `xclip`, different paths, package manager commands).
+**Note:** This configuration is tailored for macOS (judging by `pbcopy`, `killall Finder`/`Dock`, `~/.local/bin` path comment, Android SDK path structure) but can be adapted for Linux with minor changes (e.g., `pbcopy` alternative like `xclip`, different paths, package manager commands).
 
 ## Table of Contents
 
